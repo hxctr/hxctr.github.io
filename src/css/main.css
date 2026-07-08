@@ -387,48 +387,104 @@ button {
     margin-bottom: 20px;
 }
 
-/* input[type=checkbox] {
-    /*This makes to not show the checkbox
-    display: none;
-} */
+/* ============ Responsive ============ */
 
-/* .hamburger {
-    /* Not showing the hamburguer 
-    display: none;
-    font-size: 24px;
-    user-select: none;
-} 
-*/
+@media (max-width: 768px) {
+    #logo {
+        width: 60px;
+        height: 32px;
+        left: 16px;
+        top: 10px;
+    }
 
-/*adding jquery to the navbar*/
-
-/* @media (max-width: 768px) {
+    .navbar {
+        padding: 14px 16px;
+    }
 
     .menu {
-        display: none;
-        position: absolute;
-        background-color: rgb(0, 0, 0);
-        right: 0;
-        left: 0;
-        text-align: center;
-        padding: 16px 0;
+        gap: 0.4em;
+        font-size: 13px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
     }
 
-    .menu li:hover {
-        display: inline-block;
-        background-color: #000000;
-        transition: 0.3s ease;
+    .menu li {
+        padding: 5px 8px;
     }
 
-    .menu li+li {
-        margin-top: 12px;
+    #home-hero h1 {
+        font-size: 32px;
     }
 
-    input[type=checkbox]:checked~.menu {
+    .hero-tagline {
+        font-size: 16px;
+    }
+
+    .hero-bio {
+        font-size: 14px;
+    }
+
+    #cyber-content,
+    #writeup-content {
+        margin-top: 100px;
+    }
+
+    .cert-slide {
+        width: 150px;
+    }
+
+    .cert-canvas {
+        width: 150px;
+    }
+
+    /* La tabla de proyectos (Developing) tenia imagenes de ancho fijo (340px)
+       que desbordaban la pantalla; body/html tienen overflow-x:hidden, asi que
+       en mobile las columnas 2 y 3 quedaban directamente invisibles. Se apilan
+       en una sola columna y las imagenes se vuelven fluidas. */
+    #maintable img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    #maintable table.tg,
+    #maintable table.tg tbody,
+    #maintable table.tg tr,
+    #maintable td.tg-1 {
         display: block;
+        width: 100%;
     }
 
-    .hamburger {
-        display: block;
+    #maintable table.tg {
+        border-spacing: 0;
     }
-} */
+
+    #maintable td.tg-1 {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 420px) {
+    #logo {
+        width: 46px;
+        height: 25px;
+        left: 12px;
+    }
+
+    .navbar {
+        padding: 10px 12px;
+    }
+
+    .menu {
+        font-size: 11px;
+        gap: 0.2em;
+    }
+
+    .menu li {
+        padding: 4px 6px;
+    }
+
+    #home-hero h1 {
+        font-size: 26px;
+    }
+}
