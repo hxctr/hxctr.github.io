@@ -1,0 +1,50 @@
+---
+layout: layouts/base.njk
+title: Cybersecurity
+permalink: /cybersecurity.html
+---
+<div id="cyber-content">
+    <h1>Cybersecurity</h1>
+
+    <section id="certifications">
+        <h2>Certifications</h2>
+        {% if certificates.length %}
+        <div class="cert-carousel">
+            <button class="cert-nav cert-prev" aria-label="Anterior" type="button">&#10094;</button>
+            <div class="cert-track">
+                {% for cert in certificates %}
+                <a class="cert-slide" href="{{ cert.url }}" target="_blank" rel="noopener" data-pdf="{{ cert.url }}">
+                    <canvas class="cert-canvas"></canvas>
+                    <span class="cert-name">{{ cert.name }}</span>
+                </a>
+                {% endfor %}
+            </div>
+            <button class="cert-nav cert-next" aria-label="Siguiente" type="button">&#10095;</button>
+        </div>
+        {% else %}
+        <p>Todavia no hay certificados. Agrega tus PDFs en <code>src/certs/</code> y van a aparecer aca automaticamente.</p>
+        {% endif %}
+    </section>
+
+    <section id="writeups">
+        <h2>Write-ups</h2>
+        {% set grouped = collections.writeups | groupby("data.category") %}
+        {% for category, items in grouped %}
+        <h3>{{ category }}</h3>
+        <ul class="writeup-list">
+            {% for writeup in items %}
+            <li>
+                <a href="{{ writeup.url }}">{{ writeup.data.title }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>Todavia no hay write-ups publicados.</p>
+        {% endfor %}
+    </section>
+</div>
+
+{% if certificates.length %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="/js/carousel.js"></script>
+{% endif %}

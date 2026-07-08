@@ -1,0 +1,29 @@
+---
+layout: layouts/base.njk
+title: Home
+permalink: /index.html
+---
+<div id="home-hero" class="{{ 'has-bg' if heroPhotos.length }}">
+    {% if heroPhotos.length %}
+    <div class="hero-bg">
+        {% for photo in heroPhotos %}
+        <div class="hero-bg-slide{% if loop.first %} active{% endif %}" style="background-image: url('{{ photo }}');"></div>
+        {% endfor %}
+        <div class="hero-overlay"></div>
+        <canvas id="hero-network-scan"></canvas>
+    </div>
+    {% endif %}
+    <div class="hero-content">
+        <h1>Héctor Josué Ponsoy</h1>
+        <p class="hero-tagline">Pentester</p>
+        <p class="hero-bio">
+            I break into web apps, mobile apps, and infrastructure for a living.
+            Then I write up how, so it gets fixed before someone else finds it first.
+        </p>
+    </div>
+</div>
+
+{% if heroPhotos.length %}
+<script src="/js/hero-slideshow.js"></script>
+<script src="/js/hero-network-scan.js"></script>
+{% endif %}
